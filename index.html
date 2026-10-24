@@ -26,15 +26,21 @@
             <img src="./assets/h3.png" alt="" class="w-6">
         </div>
     </header>
-    <menu class="flex justify-center gap-4 bg-red-500 text-white sticky top-0 z-10">
-        <a href="#" class="hidden opacity-0 -translate-y-2 transition-all duration-300" id="menu-logo">
-            <img src="./assets/logo.png" alt="" class="h-8">
+
+    <menu class="flex justify-center items-center gap-4 bg-red-500 text-white sticky top-0 z-10 overflow-hidden">
+        <a href="#" id="menu-logo" class="grid grid-cols-[0fr] opacity-0 -translate-x-4
+              transition-all duration-500 ease-out">
+            <span class="overflow-hidden">
+                <img src="./assets/logo.png" alt="" class="h-8 max-w-none">
+            </span>
         </a>
-        <a href="" class="p-1">Tin tức</a>
-        <a href="" class="p-1">Xuất bản</a>
-        <a href="" class="p-1">Sách và cuộc sống</a>
-        <a href="" class="p-1">Giới thiệu</a>
+
+        <a href="" class="p-1 shrink-0">Tin tức</a>
+        <a href="" class="p-1 shrink-0">Xuất bản</a>
+        <a href="" class="p-1 shrink-0">Sách và cuộc sống</a>
+        <a href="" class="p-1 shrink-0">Giới thiệu</a>
     </menu>
+
     <section class="lg:flex">
         <div class="relative">
             <video class="h-80 w-full object-cover flex-1" poster="./assets/poster.jpg">
@@ -270,42 +276,59 @@
     </main>
 
 
+
     <script>
         const headerLogo = document.querySelector('#header-logo');
         const menuLogo = document.querySelector('#menu-logo');
 
-        const observer = new IntersectionObserver(([entry]) => {
-            const show = !entry.isIntersecting
-                && window.innerWidth >= 1024;
-
-            menuLogo.classList.toggle('hidden', !show);
-
+        function toggleMenuLogo(show) {
             if (show) {
+                menuLogo.classList.remove('hidden');
+
                 requestAnimationFrame(() => {
-                    menuLogo.classList.remove('opacity-0', '-translate-y-2');
+                    menuLogo.classList.remove(
+                        'grid-cols-[0fr]',
+                        'opacity-0',
+                        '-translate-x-4'
+                    );
+
+                    menuLogo.classList.add('grid-cols-[1fr]');
                 });
             } else {
-                menuLogo.classList.add('opacity-0', '-translate-y-2');
+                menuLogo.classList.remove('grid-cols-[1fr]');
+                menuLogo.classList.add(
+                    'grid-cols-[0fr]',
+                    'opacity-0',
+                    '-translate-x-4'
+                );
+
+                setTimeout(() => {
+                    if (
+                        window.innerWidth < 1024 ||
+                        headerLogo.getBoundingClientRect().bottom > 0
+                    ) {
+                        menuLogo.classList.add('hidden');
+                    }
+                }, 500);
             }
-        }, {
-            threshold: 0
+        }
+
+        const observer = new IntersectionObserver(([entry]) => {
+            toggleMenuLogo(
+                !entry.isIntersecting && window.innerWidth >= 1024
+            );
         });
 
         observer.observe(headerLogo);
 
         window.addEventListener('resize', () => {
-            const show = window.innerWidth >= 0
-                && headerLogo.getBoundingClientRect().bottom <= 0;
-
-            menuLogo.classList.toggle('hidden', !show);
-
-            if (show) {
-                menuLogo.classList.remove('opacity-0', '-translate-y-2');
-            } else {
-                menuLogo.classList.add('opacity-0', '-translate-y-2');
-            }
+            toggleMenuLogo(
+                window.innerWidth >= 1024 &&
+                headerLogo.getBoundingClientRect().bottom <= 0
+            );
         });
     </script>
+
 </body>
 
 </html>
