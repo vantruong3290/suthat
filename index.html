@@ -9,28 +9,31 @@
 </head>
 
 <body class="bg-white mx-auto">
-    <header class="p-4 flex items-start bg-yellow-200">
+    <header class="p-4 flex gap-4 flex-wrap items-start bg-yellow-200">
         <img src="./assets/logo.jpg" alt="" class="w-15 object-contain">
-        <div class="ml-4 flex-1">
-            <h2 class="text-2xl font-bold text-red-500">Nhà xuất bản chính trị quốc gia sự thật</h2>
+        <div class="flex-1">
+            <h2 class="text-2xl font-bold text-red-500">Nhà xuất bản chính trị quốc gia <span>Sự thật</span></h2>
             <p class="text-red-500 mt-1">Cơ quan xuất bản lý luận, chính trị của Đảng Cộng Sản Việt Nam</p>
+        </div>
+        <div class="flex justify-center gap-2 w-full lg:w-fit">
+            <img src="./assets/h1.png" alt="" class="w-6">
+            <img src="./assets/h2.png" alt="" class="w-6">
+            <img src="./assets/h3.png" alt="" class="w-6">
         </div>
     </header>
     <menu class="flex justify-center gap-4 bg-red-500 text-white">
-        <a href="" class="p-1 border-b-2 border-yellow-200 text-yellow-200">Tin tức</a>
+        <a href="" class="p-1">Tin tức</a>
         <a href="" class="p-1">Xuất bản</a>
+        <a href="" class="p-1">Sách và cuộc sống</a>
         <a href="" class="p-1">Giới thiệu</a>
     </menu>
     <main class="">
-        <div class="mt-5 p-4">
-            <div class="text-lg mb-2">
-                Tin tức
-            </div>
+        <div class="">
             <div class="flex flex-wrap gap-4">
                 <div class="lg:w-2/3">
                     <div class="relative">
                         <img src="./assets/img1.jpg" alt="" class="w-full object-contain">
-                        <div class="lg:absolute bottom-0 bg-black/80 lg:bg-black/40 text-white p-2">
+                        <div class="lg:absolute bottom-0 bg-red-500/90 lg:bg-black/40 text-white p-2">
                             <h2 class="text-xl font-bold">Chính phủ trình Quốc hội 3 luật sửa đổi về bất động sản
                             </h2>
                             <p class="mt-1">
@@ -42,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-1 divide-y divide-gray-300">
+                <div class="flex-1 divide-y divide-gray-300 px-4 lg:pt-4">
                     <div class="flex gap-2 pb-3">
                         <div class="flex-1">
                             <h3 class="flex-1 font-medium">Bầu Thụy muốn mở rộng V.League lên 18 đội</h3>
@@ -73,8 +76,8 @@
         </div>
         <div class="mt-5 p-4">
             <div class="text-lg mb-2 flex gap-2 items-baseline">
-                <span>Xuất bản</span>
-                <div class="h-1 border-y border-gray-400 flex-1"></div>
+                <span class="text-red-500 font-bold">Xuất bản</span>
+                <div class="h-1 border-y border-red-200 flex-1"></div>
             </div>
             <div class="flex flex-wrap gap-4">
                 <div class="flex items-start lg:w-2/3 gap-4">
@@ -114,8 +117,8 @@
         </div>
         <div class="mt-5 p-4">
             <div class="text-lg mb-2 flex gap-2 items-baseline">
-                <span>Sách hay</span>
-                <div class="h-1 border-y border-gray-400 flex-1"></div>
+                <span class="text-red-500 font-bold">Sách hay</span>
+                <div class="h-1 border-y border-red-200 flex-1"></div>
             </div>
             <div class="grid lg:grid-cols-4 gap-4">
                 <div class="flex bg-linear-65 from-purple-500 to-cyan-500 rounded overflow-hidden">
@@ -147,10 +150,10 @@
         </div>
         <div class="mt-5 p-4">
             <div class="text-lg mb-2 flex gap-2 items-baseline">
-                <span>Sách sắp xuất bản</span>
-                <div class="h-1 border-y border-gray-400 flex-1"></div>
+                <span class="text-red-500 font-bold">Sách sắp xuất bản</span>
+                <div class="h-1 border-y border-red-200 flex-1"></div>
             </div>
-            <div class="grid lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <div>
                     <img src="./assets/s1.jpg" alt="" class="lg:h-60 w-full object-cover mx-auto">
                     <div class="mt-1 font-bold">
