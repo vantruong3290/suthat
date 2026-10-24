@@ -10,7 +10,7 @@
 
 <body class="bg-white mx-auto alfa-slab-one">
     <header class="p-4 flex gap-4 flex-wrap items-start bg-yellow-200">
-        <img src="./assets/logo.png" alt="" class="w-15 object-contain">
+        <img src="./assets/logo.png" id="header-logo" alt="" class="w-15 object-contain">
         <div class="flex-1">
             <h2 class="text-2xl font-bold text-red-500 alfa-slab-one">
                 Nhà xuất bản chính trị quốc gia
@@ -27,7 +27,7 @@
         </div>
     </header>
     <menu class="flex justify-center gap-4 bg-red-500 text-white sticky top-0 z-10">
-        <a href="#" class="lg:hidden">
+        <a href="#" class="hidden opacity-0 -translate-y-2 transition-all duration-300" id="menu-logo">
             <img src="./assets/logo.png" alt="" class="h-8">
         </a>
         <a href="" class="p-1">Tin tức</a>
@@ -268,6 +268,44 @@
             </div>
         </section>
     </main>
+
+
+    <script>
+        const headerLogo = document.querySelector('#header-logo');
+        const menuLogo = document.querySelector('#menu-logo');
+
+        const observer = new IntersectionObserver(([entry]) => {
+            const show = !entry.isIntersecting
+                && window.innerWidth >= 1024;
+
+            menuLogo.classList.toggle('hidden', !show);
+
+            if (show) {
+                requestAnimationFrame(() => {
+                    menuLogo.classList.remove('opacity-0', '-translate-y-2');
+                });
+            } else {
+                menuLogo.classList.add('opacity-0', '-translate-y-2');
+            }
+        }, {
+            threshold: 0
+        });
+
+        observer.observe(headerLogo);
+
+        window.addEventListener('resize', () => {
+            const show = window.innerWidth >= 0
+                && headerLogo.getBoundingClientRect().bottom <= 0;
+
+            menuLogo.classList.toggle('hidden', !show);
+
+            if (show) {
+                menuLogo.classList.remove('opacity-0', '-translate-y-2');
+            } else {
+                menuLogo.classList.add('opacity-0', '-translate-y-2');
+            }
+        });
+    </script>
 </body>
 
 </html>
